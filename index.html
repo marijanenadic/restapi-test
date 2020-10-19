@@ -315,7 +315,9 @@
                             "tekst": $("#tekst_novosti_put").val(),
                             "kategorija_id": parseInt($("#kategorija_odabir_put").val())
                         };
-                        console.log(values);
+
+                       console.log(values);
+                     
                         id_novosti = JSON.stringify(values2);
                         $.put("http://localhost:8080/rest/api/novosti/" + id_novosti, JSON.stringify(values),function(data){
                             alert("Odgovor od servera> "+data['poruka']);
@@ -328,6 +330,7 @@
                             "kategorija": $("input[name = kategorija_naziv_put]").val()
                         };
                         console.log(values)
+                       
                         id_kategorije = JSON.stringify(values2);
                         $.put("http://localhost:8080/rest/api/kategorije/" + id_kategorije, JSON.stringify(values),function(data){
                             alert("Odgovor od servera> "+data['poruka']);
@@ -343,17 +346,20 @@
                         }
                         var id_novosti = JSON.stringify(values)
                         console.log(values);
-                        $.delete("http://localhost:8080/rest/api/novosti/" + id_novosti, JSON.stringify(values), function(data){
-                            alert("Uspjesno obrisana novost")
+                        
+                        $.delete("http://localhost:8080/rest/api/novosti" , JSON.stringify(values), function(data){
+                            alert("Novost je uspesno obrisana")
                         });
+                        
                     } else {
                         var values = {
                             "kategorija": $("input[name = brisanje").val()
                         }
                         var id_kategorije = JSON.stringify(values)
                         console.log(values);
-                        $.delete("http://localhost:8080/rest/api/kategorije/" + id_kategorije, JSON.stringify(values), function(data){
-                            alert("Uspjesno obrisana kategorija")
+                        
+                        $.delete("http://localhost:8080/rest/api/kategorije" , JSON.stringify(values), function(data){
+                            alert("Kategorija je uspesno obrisana")
                         });
                     }
                     break;
